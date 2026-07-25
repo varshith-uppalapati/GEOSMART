@@ -1,3 +1,4 @@
+import os
 import secrets
 import threading
 from pathlib import Path
@@ -45,7 +46,10 @@ training_state = {
     "bestModelPath": None,
 }
 dataset_upload_dir = BASE_DIR / "uploads" / "datasets"
-dataset_upload_dir.mkdir(parents=True, exist_ok=True)
+# Create dataset upload folder only locally
+# Vercel filesystem is read-only
+if os.environ.get("VERCEL") != "1":
+    dataset_upload_dir.mkdir(parents=True, exist_ok=True)
 
 
 def _is_authenticated():
