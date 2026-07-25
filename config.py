@@ -20,6 +20,7 @@ MODEL_PATH = BASE_DIR / "models" / "waste_model.pt"
 # Create uploads folder only in local environment
 if os.environ.get("VERCEL") != "1":
     if os.environ.get("VERCEL") != "1":
+   if os.environ.get("VERCEL") != "1":
     UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 
